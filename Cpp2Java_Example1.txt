@@ -1,0 +1,30 @@
+#include "Cpp2Java.h"
+using namespace std;
+
+// Initialize Cpp2Java
+
+Cpp2Java myJFrame;
+
+// Initialize Java stuff
+
+JButton myBtn1("First Button");
+JButton myBtn2("Second Button");
+JLabel myLbl1("Hello World!");
+JPanel leftPanel, rightPanel;
+
+int main()
+{
+	myJFrame.setLayout(new GridLayout(1, 2)); // We will use a grid layout
+	
+	leftPanel.add(myBtn1);	// add things to left panel
+	leftPanel.add(myLbl1);
+
+	rightPanel.add(myBtn2);	// add things to right panel
+
+	myJFrame.add(leftPanel);	// add panels to JFrame
+	myJFrame.add(rightPanel);
+
+	myJFrame.finish();	// tell Java you're done
+
+	return 0;
+}

@@ -1,0 +1,37 @@
+#include "Cpp2Java.h"
+using namespace std;
+
+// Initialize Cpp2Java
+
+Cpp2Java myJFrame;
+
+// Initialize Java stuff
+
+JLabel myLbl1("We can do animations!");
+JPanel leftPanel, rightPanel;
+
+int main()
+{
+	myJFrame.setLayout(new GridLayout(1, 2)); // We will use a grid layout
+
+	leftPanel.add(myLbl1);
+
+	myJFrame.add(leftPanel);	// add panels to JFrame
+	myJFrame.add(rightPanel);
+
+	myJFrame.update();	// update Java GUI to include panels
+
+	// do an animation
+	while (true)
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			rightPanel.fillOval(i, i, 50, 50);
+			rightPanel.drawRect(100-i, i, 50, 50);
+			rightPanel.repaint();
+		}
+	}
+
+	myJFrame.finish();
+	return 0;
+}

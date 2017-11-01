@@ -1,0 +1,43 @@
+#include "Cpp2Java.h"
+using namespace std;
+
+// Initialize Cpp2Java
+
+Cpp2Java myJFrame;
+
+// Initialize Java stuff
+JPanel mainPanel;
+JLabel text("Try pressing A W S or D");
+int posX = 100, posY = 100;
+
+int main()
+{
+	mainPanel.add(text);
+	myJFrame.add(mainPanel);
+
+	class KeyHandler : public KeyListener
+	{
+	public:
+		void keyReleased(KeyEvent ke)
+		{
+			if (ke.getKeyChar().compare("a") == 0)
+				posX -= 20;
+			else if (ke.getKeyChar().compare("d") == 0)
+				posX += 20;
+			else if (ke.getKeyChar().compare("w") == 0)
+				posY -= 20;
+			else if (ke.getKeyChar().compare("s") == 0)
+				posY += 20;
+
+			mainPanel.setColor("#FF0000");
+			mainPanel.fillOval(posX, posY, 50, 50);
+			mainPanel.repaint();
+		}
+	};
+
+	KeyHandler myKH;
+	myJFrame.addKeyListener(myKH);
+
+	myJFrame.finish();
+	return 0;
+}
